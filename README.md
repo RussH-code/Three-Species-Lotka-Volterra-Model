@@ -3,6 +3,40 @@ Three-Species Lotka-Volterra Model
 
 # Model
 
+The three species Lotka-Volterra model describes the predator-prey
+dynamics, where predators and prey influence each other’s evolution and
+survival.
+
+  - dR/dt = r*R – α*N\*R
+  - dN/dt = f*α*N*R – q*N – e*N*P
+  - dP/dt = z*e*N*P – b*P.
+
+where
+
+| Abb. | Meaning                                          |
+| ---- | ------------------------------------------------ |
+| R    | basal prey species                               |
+| N    | intermediate predators                           |
+| P    | top level predators                              |
+| r    | growth rate of R                                 |
+| a    | attack rate of N on R                            |
+| f    | conversion efficiency of R to new N              |
+| q    | exponential decline rate of N in absence of prey |
+| e    | attack rate of P on N                            |
+| z    | conversion efficiency of N to new P              |
+| b    | exponential decline rate of P in absence of prey |
+
+Several simplifying assumptions are made when using the model.
+
+  - the prey population will grow exponentially when the predator is
+    absent
+  - the predator population will starve in the absence of the prey
+    population
+  - predators can consume infinite quantities of prey;
+  - there is no environmental complexity
+
+<!-- end list -->
+
 ``` r
 library(deSolve)    ## Import deSolve for solving differential equation 
 library(tidyverse)  ## Import tidyverse for data manipulation and plotting
@@ -182,7 +216,7 @@ ggplot(dd$sim, aes(x=time, y=abundance, col=species)) +
   guides(colour = guide_legend(override.aes = list(size=2)))  ## Increase size of legend labels
 ```
 
-![](graphs/figure-gfm/model%20plot-1.png)<!-- -->
+![](Three-Species-Lotka-Volterra-Model_files/figure-gfm/model%20plot-1.png)<!-- -->
 
 Predator-prey relationship is characterized by periodic, out-of-phase
 cycles. As predators reduce the number of prey, lack of food eventually
@@ -354,7 +388,7 @@ res_by_parms %>%
   guides(colour = guide_legend(override.aes = list(size=2)))  ## Increase size of legend labels
 ```
 
-![](graphs/figure-gfm/attack1-1.png)<!-- -->
+![](Three-Species-Lotka-Volterra-Model_files/figure-gfm/attack1-1.png)<!-- -->
 
 Attack rate describes a predator’s hunting efficiency, and has the
 strongest effect on system longevity. For \(a\) \> 0.01 , none of the
@@ -392,7 +426,7 @@ res_by_parms %>%
            hjust = 0, size = 6, color = "#F1C40F")
 ```
 
-![](graphs/figure-gfm/attack2-1.png)<!-- -->
+![](Three-Species-Lotka-Volterra-Model_files/figure-gfm/attack2-1.png)<!-- -->
 
 Similar pattern can be observed for \(e\).
 
@@ -498,7 +532,7 @@ abun_diff %>%
   ylim(c(-100, 100))                                    ## Set y limit for graph
 ```
 
-![](graphs/figure-gfm/attack4-1.png)<!-- -->
+![](Three-Species-Lotka-Volterra-Model_files/figure-gfm/attack4-1.png)<!-- -->
 
 Here we define the extinction rate as the percentage of times a species
 become extinct and stops the simulation.
@@ -542,7 +576,7 @@ res_by_parms %>%
              size = 2, alpha = 0.5)
 ```
 
-![](graphs/figure-gfm/growth%20rate2-1.png)<!-- -->
+![](Three-Species-Lotka-Volterra-Model_files/figure-gfm/growth%20rate2-1.png)<!-- -->
 
 Simulations’ length are shorter than 100 when \(r\) \< 0.15. Only growth
 rate higher than 0.15 supports system survival.
@@ -611,7 +645,7 @@ res_by_parms %>%
   labs(x = "Time", y = "Total Abundance")         ## Set axis labels
 ```
 
-![](graphs/figure-gfm/growth%20rate5-1.png)<!-- -->
+![](Three-Species-Lotka-Volterra-Model_files/figure-gfm/growth%20rate5-1.png)<!-- -->
 
 The total abundance also increases, which can be attributed to the
 system’s increased carrying capacity. Since growth rate controls the
@@ -681,7 +715,7 @@ abun_diff_r %>%
            fontface = "italic", hjust = 0, size = 5)
 ```
 
-![](graphs/figure-gfm/growth%20rate7-1.png)<!-- -->
+![](Three-Species-Lotka-Volterra-Model_files/figure-gfm/growth%20rate7-1.png)<!-- -->
 
 The species that experiences the highest reduction in extinction is
 \(N\), which directly benefits from increased food supply.
@@ -752,7 +786,7 @@ q_by_r %>%
        y = "Simulations of length 100 (%)" )
 ```
 
-![](graphs/figure-gfm/mort3-1.png)<!-- -->
+![](Three-Species-Lotka-Volterra-Model_files/figure-gfm/mort3-1.png)<!-- -->
 
 Higher mortality rate clearly reduces survival. As \(r\) increases,
 system tolerance to extinction improved for all values of \(q\). This
@@ -782,7 +816,7 @@ res_by_parms %>%
        y = "Number of Simulations of length 100" )
 ```
 
-![](graphs/figure-gfm/mort4-1.png)<!-- -->
+![](Three-Species-Lotka-Volterra-Model_files/figure-gfm/mort4-1.png)<!-- -->
 
 \(b\) has a stronger effect than \(q\). Values higher than 0.058 are not
 sustainable, even when \(r\) is raised to 0.2.
@@ -830,7 +864,7 @@ res_by_parms %>%
            fontface = "italic", hjust = 0, size = 5)
 ```
 
-![](graphs/figure-gfm/mort5-1.png)<!-- -->
+![](Three-Species-Lotka-Volterra-Model_files/figure-gfm/mort5-1.png)<!-- -->
 
 Keeping other parameters constant, increasing the mortality rate
 increases the frequency of cycles, and the magnitude of peaks and
@@ -902,7 +936,7 @@ f_by_q %>%
   guides(colour = guide_legend(override.aes = list(size=2)))  ## Increase size of legend labels
 ```
 
-![](graphs/figure-gfm/conv2-1.png)<!-- -->
+![](Three-Species-Lotka-Volterra-Model_files/figure-gfm/conv2-1.png)<!-- -->
 
 Conversion rate describes how efficiently predators convert energy
 derived from prey into offspring. Higher conversion stimulates birth
@@ -962,7 +996,7 @@ z_by_b %>%
        y = "Simulations of length 100 (%)")
 ```
 
-![](graphs/figure-gfm/conv4-1.png)<!-- -->
+![](Three-Species-Lotka-Volterra-Model_files/figure-gfm/conv4-1.png)<!-- -->
 
 For the top predators, conversion rate does not follow the same pattern.
 Its effect depends on the species’ mortality rate. A higher mortality
@@ -1062,7 +1096,7 @@ z_b %>%
        y = "Extinction rate (%)")
 ```
 
-![](graphs/figure-gfm/conv6-1.png)<!-- -->
+![](Three-Species-Lotka-Volterra-Model_files/figure-gfm/conv6-1.png)<!-- -->
 
 High mortality with low conversion (*left*) results in high extinction
 rate for \(P\), while the reverse (*right*) causes \(N\) to go extinct,
@@ -1092,7 +1126,7 @@ res_by_parms %>%
   labs(x = "Time", y = "Abundance")                       ## Set axis label
 ```
 
-![](graphs/figure-gfm/conv7-1.png)<!-- -->
+![](Three-Species-Lotka-Volterra-Model_files/figure-gfm/conv7-1.png)<!-- -->
 
 Over time, population \(P\) expands while \(N\) stays relatively
 constant. The benefit of higher conversion in \(N\) is manifested in

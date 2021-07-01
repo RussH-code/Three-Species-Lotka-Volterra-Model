@@ -9,6 +9,33 @@ knitr::opts_chunk$set(message=FALSE, warning=FALSE)
 ```
 
 # Model
+The three species Lotka-Volterra model describes the predator-prey dynamics, where predators and prey influence each other's evolution and survival. 
+
+* dR/dt = r*R – α*N*R 
+* dN/dt = f*α*N*R – q*N – e*N*P 
+* dP/dt = z*e*N*P – b*P.
+
+where 
+
+  Abb. | Meaning
+-------|--------
+R | basal prey species
+N | intermediate predators
+P | top level predators
+r | growth rate of R
+a | attack rate of N on R
+f | conversion efficiency of R to new N
+q | exponential decline rate of N in absence of prey
+e | attack rate of P on N
+z | conversion efficiency of N to new P
+b | exponential decline rate of P in absence of prey
+
+Several simplifying assumptions are made when using the model.
+
+* the prey population will grow exponentially when the predator is absent
+* the predator population will starve in the absence of the prey population 
+* predators can consume infinite quantities of prey; 
+* there is no environmental complexity
 
 ```{r library1}
 library(deSolve)    ## Import deSolve for solving differential equation 
