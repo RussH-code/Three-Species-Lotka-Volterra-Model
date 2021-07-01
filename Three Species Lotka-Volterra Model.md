@@ -182,7 +182,7 @@ ggplot(dd$sim, aes(x=time, y=abundance, col=species)) +
   guides(colour = guide_legend(override.aes = list(size=2)))  ## Increase size of legend labels
 ```
 
-![](2087218_files/figure-gfm/model%20plot-1.png)<!-- -->
+![](graphs/figure-gfm/model%20plot-1.png)<!-- -->
 
 Predator-prey relationship is characterized by periodic, out-of-phase
 cycles. As predators reduce the number of prey, lack of food eventually
@@ -354,7 +354,7 @@ res_by_parms %>%
   guides(colour = guide_legend(override.aes = list(size=2)))  ## Increase size of legend labels
 ```
 
-![](2087218_files/figure-gfm/attack1-1.png)<!-- -->
+![](graphs/figure-gfm/attack1-1.png)<!-- -->
 
 Attack rate describes a predator’s hunting efficiency, and has the
 strongest effect on system longevity. For \(a\) \> 0.01 , none of the
@@ -392,7 +392,7 @@ res_by_parms %>%
            hjust = 0, size = 6, color = "#F1C40F")
 ```
 
-![](2087218_files/figure-gfm/attack2-1.png)<!-- -->
+![](graphs/figure-gfm/attack2-1.png)<!-- -->
 
 Similar pattern can be observed for \(e\).
 
@@ -498,7 +498,7 @@ abun_diff %>%
   ylim(c(-100, 100))                                    ## Set y limit for graph
 ```
 
-![](2087218_files/figure-gfm/attack4-1.png)<!-- -->
+![](graphs/figure-gfm/attack4-1.png)<!-- -->
 
 Here we define the extinction rate as the percentage of times a species
 become extinct and stops the simulation.
@@ -542,7 +542,7 @@ res_by_parms %>%
              size = 2, alpha = 0.5)
 ```
 
-![](2087218_files/figure-gfm/growth%20rate2-1.png)<!-- -->
+![](graphs/figure-gfm/growth%20rate2-1.png)<!-- -->
 
 Simulations’ length are shorter than 100 when \(r\) \< 0.15. Only growth
 rate higher than 0.15 supports system survival.
@@ -611,7 +611,7 @@ res_by_parms %>%
   labs(x = "Time", y = "Total Abundance")         ## Set axis labels
 ```
 
-![](2087218_files/figure-gfm/growth%20rate5-1.png)<!-- -->
+![](graphs/figure-gfm/growth%20rate5-1.png)<!-- -->
 
 The total abundance also increases, which can be attributed to the
 system’s increased carrying capacity. Since growth rate controls the
@@ -681,7 +681,7 @@ abun_diff_r %>%
            fontface = "italic", hjust = 0, size = 5)
 ```
 
-![](2087218_files/figure-gfm/growth%20rate7-1.png)<!-- -->
+![](graphs/figure-gfm/growth%20rate7-1.png)<!-- -->
 
 The species that experiences the highest reduction in extinction is
 \(N\), which directly benefits from increased food supply.
@@ -752,7 +752,7 @@ q_by_r %>%
        y = "Simulations of length 100 (%)" )
 ```
 
-![](2087218_files/figure-gfm/mort3-1.png)<!-- -->
+![](graphs/figure-gfm/mort3-1.png)<!-- -->
 
 Higher mortality rate clearly reduces survival. As \(r\) increases,
 system tolerance to extinction improved for all values of \(q\). This
@@ -782,7 +782,7 @@ res_by_parms %>%
        y = "Number of Simulations of length 100" )
 ```
 
-![](2087218_files/figure-gfm/mort4-1.png)<!-- -->
+![](graphs/figure-gfm/mort4-1.png)<!-- -->
 
 \(b\) has a stronger effect than \(q\). Values higher than 0.058 are not
 sustainable, even when \(r\) is raised to 0.2.
@@ -830,7 +830,7 @@ res_by_parms %>%
            fontface = "italic", hjust = 0, size = 5)
 ```
 
-![](2087218_files/figure-gfm/mort5-1.png)<!-- -->
+![](graphs/figure-gfm/mort5-1.png)<!-- -->
 
 Keeping other parameters constant, increasing the mortality rate
 increases the frequency of cycles, and the magnitude of peaks and
@@ -902,7 +902,7 @@ f_by_q %>%
   guides(colour = guide_legend(override.aes = list(size=2)))  ## Increase size of legend labels
 ```
 
-![](2087218_files/figure-gfm/conv2-1.png)<!-- -->
+![](graphs/figure-gfm/conv2-1.png)<!-- -->
 
 Conversion rate describes how efficiently predators convert energy
 derived from prey into offspring. Higher conversion stimulates birth
@@ -962,7 +962,7 @@ z_by_b %>%
        y = "Simulations of length 100 (%)")
 ```
 
-![](2087218_files/figure-gfm/conv4-1.png)<!-- -->
+![](graphs/figure-gfm/conv4-1.png)<!-- -->
 
 For the top predators, conversion rate does not follow the same pattern.
 Its effect depends on the species’ mortality rate. A higher mortality
@@ -1062,7 +1062,7 @@ z_b %>%
        y = "Extinction rate (%)")
 ```
 
-![](2087218_files/figure-gfm/conv6-1.png)<!-- -->
+![](graphs/figure-gfm/conv6-1.png)<!-- -->
 
 High mortality with low conversion (*left*) results in high extinction
 rate for \(P\), while the reverse (*right*) causes \(N\) to go extinct,
@@ -1092,7 +1092,7 @@ res_by_parms %>%
   labs(x = "Time", y = "Abundance")                       ## Set axis label
 ```
 
-![](2087218_files/figure-gfm/conv7-1.png)<!-- -->
+![](graphs/figure-gfm/conv7-1.png)<!-- -->
 
 Over time, population \(P\) expands while \(N\) stays relatively
 constant. The benefit of higher conversion in \(N\) is manifested in
