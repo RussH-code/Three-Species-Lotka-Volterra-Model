@@ -1,4 +1,6 @@
-Three-Species Lotka-Volterra Model
+# Three-Species Lotka-Volterra Model
+
+### by: Russell Hung (2021-Jan-15)
 ================
 
 # Model
